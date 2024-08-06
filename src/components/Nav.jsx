@@ -2,7 +2,7 @@ import React from "react";
 
 const Nav = () => {
   return (
-    <div className="h-screen font-semibold relative">
+    <div className="h-screen font-semibold relative overflow-hidden">
       <div className="flex">
         <div className="lg:w-1/2">
           <div className="flex justify-between h-16 items-center p-8 lg:px-20 lg:pl-32 text-2xl">
@@ -28,7 +28,7 @@ const Nav = () => {
         <div className="w-1/2 z-10 hidden lg:block">
           <img src="./banner.png" alt="banner-image" className="h-[85%] w-" />
         </div>
-        <div className="absolute text-[100px] md:text-[200px] lg:text-[300px] top-[500px] lg:left-28 text-red-700/15">
+        <div className="absolute text-[100px] md:text-[200px] lg:text-[300px] top-[500px] lg:left-28 text-red-700/15 ">
           <h1>Excercises</h1>
         </div>
       </div>
