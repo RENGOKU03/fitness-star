@@ -5,7 +5,6 @@
 	// List of extensions which should be recommended for users of this workspace.
 	"recommendations": [
 		"josemurilloc.aura-spirit-dracula",
-    "pkief.material-icon-theme",
     "withfig.fig",
     "drcika.apc-extension",
     "brandonkirbyson.vscode-animations",

@@ -1,13 +1,13 @@
 import React from "react";
 import NavBar from "./NavBar";
 
-const Nav = () => {
+const Nav = ({ excercises, setExcercises, bodyPart, setBodyPart }) => {
   return (
-    <div className="lg:h-screen h-[700px] font-semibold relative overflow-hidden">
+    <div className="lg:h-screen font-semibold relative overflow-hidden">
       <div className="flex">
         <div className="lg:w-1/2">
           <NavBar />
-          <div className="lg:p-10 px-10 py-10 lg:mt-32 flex flex-col gap-10 lg:pl-32">
+          <div className="lg:p-10 px-10 py-10 lg:mt-32 flex flex-col gap-10 lg:pl-32 z-30">
             <p className="text-red-700 text-2xl">Fitness Club</p>
             <p className=" text-5xl">
               Sweat, Smile <br /> and Repeat
@@ -15,9 +15,11 @@ const Nav = () => {
             <p className="text-xl font-normal">
               Check out the most effective excercises
             </p>
-            <button className="bg-red-700 text-white p-3 text-xl whitespace-nowrap rounded-md lg:w-60">
-              EXPLORE EXCERCISES
-            </button>
+            <a href="#excercise">
+              <button className="bg-red-700 text-white p-3 text-xl whitespace-nowrap rounded-md lg:w-60 cursor-pointer ">
+                EXPLORE EXCERCISES
+              </button>
+            </a>
           </div>
         </div>
         <div className="w-1/2 z-10 hidden lg:block">

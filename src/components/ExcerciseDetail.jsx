@@ -1,37 +1,20 @@
 import React from "react";
 import NavBar from "./NavBar";
+import HeroDetail from "./HeroDetail";
+import Allvidoes from "./Allvidoes";
+import SimilarEquipement from "./SimilarEquipement";
+import SimilarMuscle from "./SimilarMuscle";
 
 const ExcerciseDetail = () => {
-  const num = [1, 2, 3];
   return (
     <div>
       <div className="w-1/2 sticky">
         <NavBar />
       </div>
-      <div className="flex max-w-[80%] m-auto gap-32 main-div ">
-        <img src="./tenor.gif" alt="Excercie-gif" className="h-[500px]" />
-        <div>
-          <p className="text-7xl font-medium">All Fours Squad Stretch</p>
-          <p>
-            Excercises Keep you strong. All Fours Squad bup is one of the best
-            excercises to target your quads. It will help you inprove your mood
-            and gain energy
-          </p>
-          {num.map((item) => (
-            <div className="flex gap-4 items-center text-[15px]">
-              <div className="bg-yellow-100 rounded-full overflow-hidden h-16 w-16 flex">
-                <img
-                  src="./body-part.png"
-                  alt="body-part-image"
-                  className="h-10 w-10 m-auto"
-                />
-              </div>
-
-              <p>Upper Legs</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      <HeroDetail />
+      <Allvidoes />
+      <SimilarMuscle />
+      <SimilarEquipement />
     </div>
   );
 };
