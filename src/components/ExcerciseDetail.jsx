@@ -12,9 +12,9 @@ const ExcerciseDetail = () => {
         <NavBar />
       </div>
       <HeroDetail />
-      <Allvidoes />
+      {/* <Allvidoes />
       <SimilarMuscle />
-      <SimilarEquipement />
+      <SimilarEquipement /> */}
     </div>
   );
 };

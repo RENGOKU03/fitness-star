@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import { excerciseOptions, fetchData } from "./FetchData";
+import Loader from "./Loader";
+import { Link } from "react-router-dom";
+import ExcerciseCard from "./ExcerciseCard";
 
 const ShowComponents = ({ text, excercise, setExcercise, bodyPart }) => {
   useEffect(() => {
@@ -12,7 +15,7 @@ const ShowComponents = ({ text, excercise, setExcercise, bodyPart }) => {
         );
       } else {
         excerciseData = await fetchData(
-          "https://exercisedb.p.rapidapi.com/exercises",
+          `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
           excerciseOptions
         );
       }
@@ -21,7 +24,11 @@ const ShowComponents = ({ text, excercise, setExcercise, bodyPart }) => {
     fetchExcerciseData();
   }, [bodyPart]);
   if (!excercise.length) {
-    return <h1>Loading</h1>;
+    return (
+      <div className="w-full flex justify-center">
+        <Loader />;
+      </div>
+    );
   }
   return (
     <div id="excercise">
@@ -30,20 +37,7 @@ const ShowComponents = ({ text, excercise, setExcercise, bodyPart }) => {
       </p>
       <div className="flex flex-wrap gap-x-32 gap-y-20 justify-center">
         {excercise.map((item, index) => (
-          <div key={index} className="border-t-red-700 border-t-2 max-w-96">
-            <img src={item.gifUrl} alt="" />
-            <div className="mt-10 flex gap-5">
-              <button className="text-xl py-2 px-3 rounded-3xl min-w-20 bg-red-300">
-                {item.target}
-              </button>
-              <button className="text-xl py-2 px-3 rounded-3xl min-w-20 bg-yellow-300">
-                {item.bodyPart}
-              </button>
-            </div>
-            <p className="text-xl font-medium pt-10 pl-2 text-black/80">
-              {item.name.toUpperCase()}
-            </p>
-          </div>
+          <ExcerciseCard key={index} item={item} />
         ))}
       </div>
     </div>

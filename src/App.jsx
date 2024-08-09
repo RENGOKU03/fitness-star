@@ -21,7 +21,6 @@ function App() {
         bodyPart={bodyPart}
         setBodyPart={setBodyPart}
       />
-      {/* <ExcerciseDetail /> */}
     </>
   );
 }

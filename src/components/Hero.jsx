@@ -62,6 +62,7 @@ const Hero = ({ excercise, setExcercise, bodyPart, setBodyPart }) => {
         </div>
         <div>
           <HorizontalScrollBar
+            data={bodyParts}
             bodyParts={bodyParts}
             bodyPart={bodyPart}
             setBodyPart={setBodyPart}

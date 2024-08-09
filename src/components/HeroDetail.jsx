@@ -5,7 +5,7 @@ const HeroDetail = () => {
   return (
     <div>
       <div className="flex max-w-[80%] m-auto gap-32 main-div mt-[10%]">
-        <img src="./tenor.gif" alt="Excercie-gif" className="h-[500px]" />
+        <img src="/./tenor.gif" alt="Excercie-gif" className="h-[500px]" />
         <div>
           <p className="text-7xl font-medium">All Fours Squad Stretch</p>
           <p>
@@ -13,11 +13,11 @@ const HeroDetail = () => {
             excercises to target your quads. It will help you inprove your mood
             and gain energy
           </p>
-          {num.map((item) => (
-            <div className="flex gap-4 items-center text-[15px]">
+          {num.map((item, index) => (
+            <div key={index} className="flex gap-4 items-center text-[15px]">
               <div className="bg-yellow-100 rounded-full overflow-hidden h-16 w-16 flex">
                 <img
-                  src="./body-part.png"
+                  src="/./body-part.png"
                   alt="body-part-image"
                   className="h-10 w-10 m-auto"
                 />
