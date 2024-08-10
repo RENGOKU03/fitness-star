@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import HeroDetail from "./HeroDetail";
-import SimilarEquipement from "./SimilarEquipement";
-import SimilarMuscle from "./SimilarMuscle";
-import { useFetcher, useParams } from "react-router-dom";
+
+import { useParams } from "react-router-dom";
 import { excerciseOptions, fetchData, youtubeOptions } from "./FetchData";
 import Loader from "./Loader";
 import Allvideos from "./Allvideos";
+import SimilarExercises from "./SimilarExercises";
+import Footer from "./Footer";s
 
 const ExcerciseDetail = () => {
   const [exerciseDetail, setExerciseDetail] = useState();
@@ -30,7 +31,6 @@ const ExcerciseDetail = () => {
         youtubeOptions
       );
       setExerciseVideo(exerciseVideosData.contents);
-      console.log(exerciseVideo);
       const targetMuscleExercisesData = await fetchData(
         `${exerciseDbURL}/exercises/target/${exerciseDetailData.target}`,
         excerciseOptions
@@ -60,8 +60,11 @@ const ExcerciseDetail = () => {
       </div>
 
       <Allvideos exerciseVideo={exerciseVideo} name={exerciseDetail.name} />
-      {/* <SimilarMuscle />
-      <SimilarEquipement /> */}
+      <SimilarExercises
+        targetMuscleExercise={targetMuscleExercise}
+        equipmentExercise={equipmentExercise}
+      />
+      <Footer />
     </div>
   );
 };

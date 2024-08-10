@@ -21,7 +21,7 @@ const HeroDetail = ({ exerciseDetail }) => {
       <div className="flex max-w-[80%] m-auto gap-32 main-div mt-[10%]">
         <img src={gifUrl} alt="Excercie-gif" className="h-[500px]" />
         <div>
-          <p className="text-7xl font-medium mb-10">{name}</p>
+          <p className="text-7xl font-medium mb-10">{name.toUpperCase()}</p>
           <p>
             Excercises Keep you strong. {name} bup is one of the best excercises
             to target your {target}. It will help you improve your <br /> mood
@@ -40,7 +40,7 @@ const HeroDetail = ({ exerciseDetail }) => {
                 />
               </div>
 
-              <p>{item.name}</p>
+              <p>{item.name.toUpperCase()}</p>
             </div>
           ))}
         </div>
