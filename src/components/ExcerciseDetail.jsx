@@ -1,19 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import HeroDetail from "./HeroDetail";
-import Allvidoes from "./Allvidoes";
 import SimilarEquipement from "./SimilarEquipement";
 import SimilarMuscle from "./SimilarMuscle";
+import { useFetcher, useParams } from "react-router-dom";
+import { excerciseOptions, fetchData, youtubeOptions } from "./FetchData";
+import Loader from "./Loader";
+import Allvideos from "./Allvideos";
 
 const ExcerciseDetail = () => {
+  const [exerciseDetail, setExerciseDetail] = useState();
+  const [exerciseVideo, setExerciseVideo] = useState(null);
+  const [targetMuscleExercise, setTargetMuscleExercise] = useState();
+  const [equipmentExercise, setEquipmentExercise] = useState();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchExcerciseData = async () => {
+      const exerciseDbURL = "https://exercisedb.p.rapidapi.com";
+      const youtubeSearchURl =
+        "https://youtube-search-and-download.p.rapidapi.com";
+      const exerciseDetailData = await fetchData(
+        `${exerciseDbURL}/exercises/exercise/${id}`,
+        excerciseOptions
+      );
+      setExerciseDetail(exerciseDetailData);
+      const exerciseVideosData = await fetchData(
+        `${youtubeSearchURl}/search?query=${exerciseDetailData.name} exercise`,
+        youtubeOptions
+      );
+      setExerciseVideo(exerciseVideosData.contents);
+      console.log(exerciseVideo);
+      const targetMuscleExercisesData = await fetchData(
+        `${exerciseDbURL}/exercises/target/${exerciseDetailData.target}`,
+        excerciseOptions
+      );
+      setTargetMuscleExercise(targetMuscleExercisesData);
+
+      const equimentExercisesData = await fetchData(
+        `${exerciseDbURL}/exercises/equipment/${exerciseDetailData.equipment}`,
+        excerciseOptions
+      );
+      setEquipmentExercise(equimentExercisesData);
+    };
+    fetchExcerciseData();
+  }, [id]);
+
+  if (!exerciseDetail) {
+    return <Loader />;
+  }
+
   return (
     <div>
-      <div className="w-1/2 sticky">
-        <NavBar />
+      <div className="h-screen">
+        <div className="w-1/2 sticky">
+          <NavBar />
+        </div>
+        <HeroDetail exerciseDetail={exerciseDetail} />
       </div>
-      <HeroDetail />
-      {/* <Allvidoes />
-      <SimilarMuscle />
+
+      <Allvideos exerciseVideo={exerciseVideo} name={exerciseDetail.name} />
+      {/* <SimilarMuscle />
       <SimilarEquipement /> */}
     </div>
   );
