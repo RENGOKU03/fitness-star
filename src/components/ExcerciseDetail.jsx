@@ -7,7 +7,7 @@ import { excerciseOptions, fetchData, youtubeOptions } from "./FetchData";
 import Loader from "./Loader";
 import Allvideos from "./Allvideos";
 import SimilarExercises from "./SimilarExercises";
-import Footer from "./Footer";s
+import Footer from "./Footer";
 
 const ExcerciseDetail = () => {
   const [exerciseDetail, setExerciseDetail] = useState();
